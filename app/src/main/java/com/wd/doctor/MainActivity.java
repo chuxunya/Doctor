@@ -13,8 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.wd.doctor.view.LoginActivity;
-import com.wd.mvp.base.BaseActivity;
-import com.wd.mvp.base.BasePresenter;
+
 
 public class MainActivity extends AppCompatActivity {
 
