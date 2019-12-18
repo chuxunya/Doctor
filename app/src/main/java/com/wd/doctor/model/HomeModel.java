@@ -6,6 +6,7 @@ import com.wd.doctor.app.ApiServer;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -128,6 +129,38 @@ public class HomeModel implements HomeContract.Imodel {
 
         }else {
             Toast.makeText(App.getAppContext(), "网络开小差了,请检查网络", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void getDoctorModel(String doctorId, String sessionId, IModelDoctorCallBack iModelCallBack) {
+        if (NetUtil.hasNet(App.getAppContext())) {
+            RetrofitManager.getInstance().create(ApiServer.class)
+                    .getDoctorById(doctorId, sessionId)
+                    .compose(CommonSchedulers.io2main())
+                    .subscribe(new Observer<DoctorBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(DoctorBean doctorBean) {
+                            iModelCallBack.onSuccess(doctorBean);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            iModelCallBack.onError(e.getMessage());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }else {
+            Toast.makeText(App.getAppContext(), "请检查网络", Toast.LENGTH_SHORT).show();
         }
     }
 

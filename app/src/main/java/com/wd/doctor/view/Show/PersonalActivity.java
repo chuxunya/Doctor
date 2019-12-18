@@ -1,15 +1,18 @@
 package com.wd.doctor.view.Show;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wd.doctor.R;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -43,16 +46,38 @@ public class PersonalActivity extends BaseActivity<HomePresenter> implements Hom
     TextView personalShanchang;
     @BindView(R.id.personal_phone)
     TextView personalPhone;
+    private String name;
+    private String inauguralHospital;
     private String departmentName;
     private String jobTitle;
-    private String inauguralHospital;
-    private String name;
+    private String personalProfile;
+    private String goodField;
 
 
     @Override
     public void onLoginSuccess(LoginBean data) {
 
 
+    }
+
+    @Override
+    public void onDoctorSuccess(DoctorBean data) {
+        if (data.getResult()!=null) {
+            name = data.getResult().getName();
+            inauguralHospital = data.getResult().getInauguralHospital();
+            departmentName = data.getResult().getDepartmentName();
+            jobTitle = data.getResult().getJobTitle();
+            personalProfile = data.getResult().getPersonalProfile();
+            goodField = data.getResult().getGoodField();
+            personalName.setText(name);
+            personalYiyuan.setText(inauguralHospital);
+            personalKeshi.setText(departmentName);
+            personalZhicheng.setText(jobTitle);
+            personalSelf.setText(personalProfile);
+            personalShanchang.setText(goodField);
+        }else {
+            Toast.makeText(this, data.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -118,19 +143,12 @@ public class PersonalActivity extends BaseActivity<HomePresenter> implements Hom
     @Override
     protected void initData() {
         super.initData();
-        /*intent.putExtra("name",name);
-        intent.putExtra("inauguralHospital",inauguralHospital);
-        intent.putExtra("jobTitle",jobTitle);
-        intent.putExtra("departmentName",departmentName);*/
-        Intent intent = getIntent();
-        name = intent.getStringExtra("name");
-        inauguralHospital = intent.getStringExtra("inauguralHospital");
-        jobTitle = intent.getStringExtra("jobTitle");
-        departmentName = intent.getStringExtra("departmentName");
-        personalName.setText(name);
-        personalYiyuan.setText(inauguralHospital);
-        personalKeshi.setText(departmentName);
-        personalZhicheng.setText(jobTitle);
+        SharedPreferences doctor = getSharedPreferences("doctor", MODE_PRIVATE);
+        String id = doctor.getString("id", "");
+        String sessionId = doctor.getString("sessionId", "");
+        mPresenter.getDoctorPresenter(id,sessionId);
+
+
     }
 
     @OnClick({R.id.personal_back, R.id.personal_phone})

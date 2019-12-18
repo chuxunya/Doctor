@@ -3,6 +3,7 @@ package com.wd.doctor.app;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -59,4 +60,8 @@ public interface ApiServer {
     //修改消息状态为全部已读
     @PUT("health/doctor/verify/v1/modifyAllStatus")
     Observable<MessageBean> putAllMessage(@Header("doctorId") String doctorId,@Header("sessionId")String sessionId);
+    //根据医生id查询医生信息
+    @GET("health/doctor/verify/v1/findDoctorById")
+    Observable<DoctorBean> getDoctorById(@Header("doctorId") String doctorId, @Header("sessionId")String sessionId);
+
 }

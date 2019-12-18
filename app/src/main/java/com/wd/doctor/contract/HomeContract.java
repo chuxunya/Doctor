@@ -3,6 +3,7 @@ package com.wd.doctor.contract;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -20,6 +21,7 @@ import com.wd.mvp.base.IBaseView;
 public interface HomeContract {
     interface Iview extends IBaseView {
         void onLoginSuccess(LoginBean data);
+        void onDoctorSuccess(DoctorBean data);
         void onAllMeaageSuccess(MessageBean data);
         void onSearchSuccess(SearchBean data);
         void onBodySuccess(BodyBean data);
@@ -35,6 +37,7 @@ public interface HomeContract {
         void postLoginModel(String email,String pwd,IModelCallBack iModelCallBack);
         void postCheckCodeModel(String email,String code,IModelCheckCodeCallBack iModelCallBack);
         void putAllMessageModel(String doctorId,String sessionId,IModelAllMessageCallBack iModelCallBack);
+        void getDoctorModel(String doctorId,String sessionId,IModelDoctorCallBack iModelCallBack);
         void getBodyModel(String departmentId,String page,String count,IModelBodyCallBack iModelCallBack);
         void putForgetModel(String email,String pwd1,String pwd2,IModelForgetCallBack iModelCallBack);
         void getKeShiModel(IModelKeShiCallBack iModelCallBack);
@@ -92,12 +95,18 @@ public interface HomeContract {
             void onSuccess(MessageBean data);
             void onError(String e);
         }
+
+        interface IModelDoctorCallBack {
+            void onSuccess(DoctorBean data);
+            void onError(String e);
+        }
     }
     //p层
     interface Ipresenter{
         void getSearchModel(String keyWord);
         void postLoginPresenter(String email,String pwd);
         void putAllMessagePresenter(String doctorId,String sessionId);
+        void getDoctorPresenter(String doctorId,String sessionId);
         void postForgetPresenter(String email,String pwd1,String pwd2);
         void getBodyPresenter(String departmentId,String page,String count);
         void postCheckCodePresenter(String email,String code);

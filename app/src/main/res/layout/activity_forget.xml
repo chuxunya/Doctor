@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:background="@mipmap/forget_bg"
     tools:context=".view.ForgetActivity">
+
     <ImageView
         android:id="@+id/img_back_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
-        android:src="@mipmap/back_bai"
-        android:layout_width="16dp"
-        android:layout_height="16dp"/>
+        android:src="@mipmap/back_bai" />
     <TextView
         android:textSize="16sp"
         android:layout_marginTop="40dp"

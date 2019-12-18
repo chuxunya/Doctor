@@ -19,6 +19,7 @@ import com.wd.doctor.adapter.Show.MyBodyAdapter;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -86,6 +87,11 @@ public class SickFrag extends BaseFragment<HomePresenter> implements HomeContrac
     }
 
     @Override
+    public void onDoctorSuccess(DoctorBean data) {
+
+    }
+
+    @Override
     public void onAllMeaageSuccess(MessageBean data) {
 
     }
@@ -107,6 +113,7 @@ public class SickFrag extends BaseFragment<HomePresenter> implements HomeContrac
                 @Override
                 public void onItem(String id) {
                     Intent intent = new Intent(getActivity(), XiangQingActivity.class);
+                    intent.putExtra("id",id);
                     startActivity(intent);
                 }
             });

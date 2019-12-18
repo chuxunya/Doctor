@@ -15,6 +15,7 @@ import com.wd.doctor.RsaCoder;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -99,6 +100,11 @@ public class LoginActivity extends BaseActivity<HomePresenter> implements HomeCo
         }else {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onDoctorSuccess(DoctorBean data) {
+
     }
 
     @Override

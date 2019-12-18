@@ -13,6 +13,7 @@ import com.wd.doctor.R;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -47,6 +48,11 @@ public class ForgetActivity extends BaseActivity<HomePresenter> implements HomeC
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onDoctorSuccess(DoctorBean data) {
 
     }
 

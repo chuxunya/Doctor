@@ -20,6 +20,7 @@ import com.wd.doctor.R;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -73,6 +74,11 @@ public class MySelfActivity extends BaseActivity<HomePresenter> implements HomeC
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onDoctorSuccess(DoctorBean data) {
 
     }
 
@@ -203,19 +209,15 @@ myPhoto.setOnClickListener(new View.OnClickListener() {
                 Toast.makeText(this, "铃铛", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_look:
-                /*name = intent.getStringExtra("name");
-                inauguralHospital = intent.getStringExtra("inauguralHospital");
-                jobTitle = intent.getStringExtra("jobTitle");
-                departmentName = intent.getStringExtra("departmentName");*/
+
                 Intent intent = new Intent(MySelfActivity.this, PersonalActivity.class);
-                intent.putExtra("name",name);
-                intent.putExtra("inauguralHospital",inauguralHospital);
-                intent.putExtra("jobTitle",jobTitle);
-                intent.putExtra("departmentName",departmentName);
+
                 startActivity(intent);
                 break;
             case R.id.liner_history:
-                Toast.makeText(this, "历史", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(MySelfActivity.this, HistoryActivity.class);
+                startActivity(intent1);
+
                 break;
             case R.id.linear_money:
                 Toast.makeText(this, "钱包", Toast.LENGTH_SHORT).show();

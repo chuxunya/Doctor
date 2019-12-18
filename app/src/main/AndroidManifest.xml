@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Show.PersonalActivity"></activity>
+        <activity android:name=".view.Show.HistoryActivity"></activity>
+        <activity android:name=".view.Show.PersonalActivity" />
         <activity android:name=".view.Show.UpdateActivity" />
         <activity android:name=".view.message.MessageActivity" />
         <activity android:name=".view.Sick.XiangQingActivity" />

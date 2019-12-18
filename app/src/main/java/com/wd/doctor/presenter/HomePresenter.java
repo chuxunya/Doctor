@@ -3,6 +3,7 @@ package com.wd.doctor.presenter;
 import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
@@ -65,6 +66,21 @@ public class HomePresenter extends BasePresenter<HomeContract.Iview> implements 
             @Override
             public void onSuccess(MessageBean data) {
                 getView().onAllMeaageSuccess(data);
+            }
+
+            @Override
+            public void onError(String e) {
+                getView().onHomeError(e);
+            }
+        });
+    }
+
+    @Override
+    public void getDoctorPresenter(String doctorId, String sessionId) {
+        homeModel.getDoctorModel(doctorId, sessionId, new HomeContract.Imodel.IModelDoctorCallBack() {
+            @Override
+            public void onSuccess(DoctorBean data) {
+                getView().onDoctorSuccess(data);
             }
 
             @Override
