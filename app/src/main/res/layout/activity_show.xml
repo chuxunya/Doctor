@@ -1,9 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ShowActivity">
+    tools:context=".view.Show.ShowActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="16sp"
+                android:textColor="@color/colorLan"
+                android:text="主要业务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/img_show_ling"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/common_nav_message_black_n"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="76dp"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/show_wen"
+                android:layout_centerHorizontal="true"
+                android:layout_width="320dp"
+                android:layout_height="150dp">
+                <ImageView
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                    android:src="@mipmap/inquiry_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <RelativeLayout
+                    android:id="@+id/relative_xin_xiao_xi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:layout_marginRight="50dp"
+                        android:textColor="@color/colorBai"
+                        android:text="有新消息"
+                        android:textSize="8sp"
+                        android:background="@drawable/btlogin"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"/>
+                    <ImageView
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="45dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/jiantou"
+                        android:layout_width="10dp"
+                        android:layout_height="18dp"/>
+                    <ImageView
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/doctor"
+                        android:layout_width="30dp"
+                        android:layout_height="50dp"/>
+                </RelativeLayout>
+                <ImageView
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/tip_box"
+                    android:layout_width="59dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#fff"
+                    android:text="问诊"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/show_da"
+                android:layout_marginTop="10dp"
+                android:layout_width="320dp"
+                android:layout_height="150dp">
+                <ImageView
+
+                    android:src="@mipmap/promise_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/tip_box"
+                    android:layout_width="59dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#fff"
+                    android:text="答疑"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+            <TextView
+                android:layout_marginTop="30dp"
+                android:text="我的信息"
+                android:textSize="16sp"
+                android:textColor="@color/colorLan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:id="@+id/show_guan"
+                android:layout_marginTop="20dp"
+                android:layout_width="320dp"
+                android:layout_marginBottom="40dp"
+                android:layout_height="150dp">
+                <ImageView
+
+                    android:src="@mipmap/my_information_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <ImageView
+                    android:id="@+id/img_show_tou"
+                    android:layout_margin="10dp"
+                    android:layout_width="105dp"
+                    android:layout_height="130dp"/>
+               <LinearLayout
+                   android:layout_marginLeft="145dp"
+                   android:layout_centerVertical="true"
+                   android:orientation="vertical"
+                   android:layout_width="wrap_content"
+                   android:layout_height="match_parent">
+                   <TextView
+                       android:id="@+id/tv_show_name"
+                       android:layout_marginTop="27dp"
+                       android:textColor="#666666"
+                       android:text="曾小贤"
+                       android:textSize="16sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+                   <TextView
+                       android:id="@+id/tv_show_yiyuan"
+                       android:layout_marginTop="20dp"
+                       android:textColor="#666666"
+                       android:text="广东省妇幼保健院"
+                       android:textSize="12sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+                   <TextView
+                       android:id="@+id/tv_Show_zhiwei"
+                       android:layout_marginTop="12dp"
+                       android:textColor="#666666"
+                       android:text="广东省妇幼保健院"
+                       android:textSize="12sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+                   <TextView
+                       android:id="@+id/tv_show_keshi"
+                       android:layout_marginTop="12dp"
+                       android:textColor="#666666"
+                       android:text="小儿科"
+                       android:textSize="12sp"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"/>
+
+               </LinearLayout>
+
+                <ImageView
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@mipmap/tip_box"
+                    android:layout_width="59dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="#fff"
+                    android:text="管理"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</ScrollView>

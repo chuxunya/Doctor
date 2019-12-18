@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/set_but_album"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:background="@drawable/btforget"
+        android:text="更换形象照"
+        android:textColor="#2196F3"
+        android:textSize="14sp" />
+
+    <Button
+        android:background="@drawable/btforget"
+        android:id="@+id/set_but_dismiss"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/set_but_album"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#2196F3"
+        android:textSize="14sp" />
+
+</LinearLayout>

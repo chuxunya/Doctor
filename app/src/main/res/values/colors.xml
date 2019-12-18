@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorLan">#3087ea</color>
+    <color name="colorRed">#d92109</color>
+    <color name="colorLv">#4fcb9f</color>
+    <color name="colorHei">#000000</color>
+    <color name="colorHui">#999999</color>
+    <color name="colorQianHui">#dddddd</color>
+    <color name="colorBai">#ffffff</color>
 </resources>

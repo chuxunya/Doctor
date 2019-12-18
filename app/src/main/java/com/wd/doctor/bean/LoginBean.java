@@ -8,8 +8,9 @@ package com.wd.doctor.bean;
  **/
 public class LoginBean {
 
+
     /**
-     * result : {"departmentId":5,"departmentName":"小儿科","id":158,"inauguralHospital":"清华大学附属医院","jiGuangPwd":"enlOnObxlUlF74bz96CjPAF7DJv5WDYHfpyXPw9EkGiGK5VMYIm9+xblEVkY3jUw1SQ8R1pIZQV/ueLVisXlImCSkfHJ6BTbN39s+smgAYz4grYDwYAzFcH2c2ywv3HrP79oCMpGnR7oB4lQzePxzArW+4K17baeCzxyO6m7Epk=","jobTitle":"主任","name":"董先生","reviewStatus":2,"sessionId":"1581576022277236158","userName":"l42lX41758992398","whetherHaveImagePic":2}
+     * result : {"departmentId":5,"departmentName":"小儿科","id":158,"imagePic":"http://172.17.8.100/images/health/doctor/image_pic/2019-12-11/F3EAZn20191211135120.png","inauguralHospital":"清华大学附属医院","jiGuangPwd":"enlOnObxlUlF74bz96CjPAF7DJv5WDYHfpyXPw9EkGiGK5VMYIm9+xblEVkY3jUw1SQ8R1pIZQV/ueLVisXlImCSkfHJ6BTbN39s+smgAYz4grYDwYAzFcH2c2ywv3HrP79oCMpGnR7oB4lQzePxzArW+4K17baeCzxyO6m7Epk=","jobTitle":"主任","name":"董先生","reviewStatus":2,"sessionId":"1581576234700709158","userName":"l42lX41758992398","whetherHaveImagePic":1}
      * message : 登录成功
      * status : 0000
      */
@@ -47,33 +48,35 @@ public class LoginBean {
          * departmentId : 5
          * departmentName : 小儿科
          * id : 158
+         * imagePic : http://172.17.8.100/images/health/doctor/image_pic/2019-12-11/F3EAZn20191211135120.png
          * inauguralHospital : 清华大学附属医院
          * jiGuangPwd : enlOnObxlUlF74bz96CjPAF7DJv5WDYHfpyXPw9EkGiGK5VMYIm9+xblEVkY3jUw1SQ8R1pIZQV/ueLVisXlImCSkfHJ6BTbN39s+smgAYz4grYDwYAzFcH2c2ywv3HrP79oCMpGnR7oB4lQzePxzArW+4K17baeCzxyO6m7Epk=
          * jobTitle : 主任
          * name : 董先生
          * reviewStatus : 2
-         * sessionId : 1581576022277236158
+         * sessionId : 1581576234700709158
          * userName : l42lX41758992398
-         * whetherHaveImagePic : 2
+         * whetherHaveImagePic : 1
          */
 
-        private int departmentId;
+        private String departmentId;
         private String departmentName;
-        private int id;
+        private String id;
+        private String imagePic;
         private String inauguralHospital;
         private String jiGuangPwd;
         private String jobTitle;
         private String name;
-        private int reviewStatus;
+        private String reviewStatus;
         private String sessionId;
         private String userName;
-        private int whetherHaveImagePic;
+        private String whetherHaveImagePic;
 
-        public int getDepartmentId() {
+        public String getDepartmentId() {
             return departmentId;
         }
 
-        public void setDepartmentId(int departmentId) {
+        public void setDepartmentId(String departmentId) {
             this.departmentId = departmentId;
         }
 
@@ -85,12 +88,20 @@ public class LoginBean {
             this.departmentName = departmentName;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
+        }
+
+        public String getImagePic() {
+            return imagePic;
+        }
+
+        public void setImagePic(String imagePic) {
+            this.imagePic = imagePic;
         }
 
         public String getInauguralHospital() {
@@ -125,11 +136,11 @@ public class LoginBean {
             this.name = name;
         }
 
-        public int getReviewStatus() {
+        public String getReviewStatus() {
             return reviewStatus;
         }
 
-        public void setReviewStatus(int reviewStatus) {
+        public void setReviewStatus(String reviewStatus) {
             this.reviewStatus = reviewStatus;
         }
 
@@ -149,11 +160,11 @@ public class LoginBean {
             this.userName = userName;
         }
 
-        public int getWhetherHaveImagePic() {
+        public String getWhetherHaveImagePic() {
             return whetherHaveImagePic;
         }
 
-        public void setWhetherHaveImagePic(int whetherHaveImagePic) {
+        public void setWhetherHaveImagePic(String whetherHaveImagePic) {
             this.whetherHaveImagePic = whetherHaveImagePic;
         }
     }

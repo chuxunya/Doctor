@@ -13,11 +13,15 @@ import android.widget.Toast;
 
 import com.wd.doctor.MainActivity;
 import com.wd.doctor.R;
+import com.wd.doctor.bean.ForgetBean;
 import com.wd.doctor.bean.LoginBean;
+import com.wd.doctor.bean.Show.BodyBean;
+import com.wd.doctor.bean.Show.SearchBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
 import com.wd.doctor.bean.login.ZhiZeBean;
+import com.wd.doctor.bean.message.MessageBean;
 import com.wd.doctor.contract.HomeContract;
 import com.wd.doctor.presenter.HomePresenter;
 import com.wd.mvp.base.BaseActivity;
@@ -53,6 +57,31 @@ public class SettledInActivity extends BaseActivity<HomePresenter> implements Ho
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onAllMeaageSuccess(MessageBean data) {
+
+    }
+
+    @Override
+    public void onSearchSuccess(SearchBean data) {
+
+    }
+
+    @Override
+    public void onBodySuccess(BodyBean data) {
+
+    }
+
+    @Override
+    public void onForgetSuccess(ForgetBean data) {
+
+    }
+
+    @Override
+    public void onChecKCodeSuccess(ForgetBean data) {
 
     }
 
@@ -93,16 +122,13 @@ public class SettledInActivity extends BaseActivity<HomePresenter> implements Ho
     }
 
 
-
     @OnClick({R.id.tv_in_code, R.id.img_bi, R.id.img_kai, R.id.img_bi_two, R.id.img_kai_two, R.id.bt_next})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_in_code:
 
                 email = etInEmail.getText().toString().trim();
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(this, "邮箱为空", Toast.LENGTH_SHORT).show();
-                }
+
                 mPresenter.postSendCodePresenter(email);
                 break;
             case R.id.img_bi:

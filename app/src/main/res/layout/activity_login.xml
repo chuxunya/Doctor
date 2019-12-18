@@ -24,9 +24,11 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"/>
             <EditText
+                android:lines="1"
                 android:id="@+id/et_email"
                 android:layout_marginLeft="20dp"
                 android:background="@null"
+                android:text="1758992398@qq.com"
                 android:textColorHint="#999999"
                 android:hint="请输入邮箱账号"
                 android:layout_width="300dp"
@@ -50,6 +52,8 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"/>
             <EditText
+                android:lines="1"
+                android:text="123"
                 android:id="@+id/et_pwd"
                 android:password="true"
                 android:layout_marginLeft="20dp"

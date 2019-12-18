@@ -53,7 +53,7 @@ public class KeShiBean {
          */
 
         private String departmentName;
-        private int id;
+        private String id;
         private String pic;
         private int rank;
 
@@ -65,11 +65,11 @@ public class KeShiBean {
             this.departmentName = departmentName;
         }
 
-        public int getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(int id) {
+        public void setId(String id) {
             this.id = id;
         }
 
