@@ -51,11 +51,13 @@ public class MySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Date date = new Date(result.get(position).getReleaseTime());
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd hh:mm");
             ((ViewHolder1) holder).tv_time.setText(simpleDateFormat.format(date));
-          /*  ((ViewHolder1) holder).tv_title.setText(result.get(position).getTitle());
-            ((ViewHolder1) holder).tv_nei.setText(result.get(position).getDetail());
-            Date date = new Date(result.get(position).getReleaseTime());
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy-MM-dd hh:mm");
-            ((ViewHolder1) holder).tv_time.setText(simpleDateFormat.format(date));*/
+            ((ViewHolder1) holder).linear_sick.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int sickCircleId = result.get(position).getSickCircleId();
+                    onItemClickListener.onItemClick(sickCircleId);
+                }
+            });
         }
     }
 
@@ -63,6 +65,13 @@ public class MySearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public int getItemCount() {
         return result.size();
+    }
+    OnItemClickListener onItemClickListener;
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener=onItemClickListener;
+    }
+    public interface OnItemClickListener{
+        void onItemClick(int sickId);
     }
 
     private class ViewHolder1 extends RecyclerView.ViewHolder {

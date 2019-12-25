@@ -1,6 +1,8 @@
 package com.wd.doctor.view.Sick;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.wd.doctor.HideIMEUtil;
 import com.wd.doctor.R;
 import com.wd.doctor.adapter.Show.MySearchAdapter;
 import com.wd.doctor.bean.ForgetBean;
@@ -19,6 +22,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -54,11 +59,21 @@ public class SearchActivity extends BaseActivity<HomePresenter> implements HomeC
     @Override
     protected void initData() {
         super.initData();
-
+        HideIMEUtil.wrap(this);
     }
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onSendSuccess(SendBean data) {
+
+    }
+
+    @Override
+    public void onXiangSuccess(XinagQBean data) {
 
     }
 
@@ -81,9 +96,18 @@ public class SearchActivity extends BaseActivity<HomePresenter> implements HomeC
             recyclerSearch.setLayoutManager(linearLayoutManager);
             MySearchAdapter mySearchAdapter = new MySearchAdapter(this, result);
             recyclerSearch.setAdapter(mySearchAdapter);
+            mySearchAdapter.setOnItemClickListener(new MySearchAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(int sickId) {
+                    Intent intent = new Intent(SearchActivity.this, XiangQingActivity.class);
+                    intent.putExtra("sickId",sickId+"");
+                    startActivity(intent);
+                }
+            });
+            recyclerSearch.setVisibility(View.VISIBLE);
             linearWu.setVisibility(View.GONE);
         } else if (data.getResult().isEmpty()) {
-
+            recyclerSearch.setVisibility(View.GONE);
             linearWu.setVisibility(View.VISIBLE);
         } else {
             Toast.makeText(this, "请检查网络", Toast.LENGTH_SHORT).show();
@@ -150,10 +174,11 @@ public class SearchActivity extends BaseActivity<HomePresenter> implements HomeC
             case R.id.tv_search:
 
                 search = etSearch.getText().toString().trim();
-                if (!search.isEmpty()) {
-                    mPresenter.getSearchModel(search);
-                }else {
+                if (TextUtils.isEmpty(search)) {
                     Toast.makeText(this, "输入框为空", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    mPresenter.getSearchModel(search);
                 }
 
                 break;

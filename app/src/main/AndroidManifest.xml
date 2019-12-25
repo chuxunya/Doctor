@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wd.doctor">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,7 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.Show.HistoryActivity"></activity>
+        <activity android:name=".view.money.BankCardActivity"></activity>
+        <activity android:name=".view.money.IdCardActivity" />
+        <activity android:name=".view.Show.BangCardActivity" />
+        <activity android:name=".view.Show.MoneyActivity" />
+        <activity android:name=".view.Show.HistoryActivity" />
         <activity android:name=".view.Show.PersonalActivity" />
         <activity android:name=".view.Show.UpdateActivity" />
         <activity android:name=".view.message.MessageActivity" />

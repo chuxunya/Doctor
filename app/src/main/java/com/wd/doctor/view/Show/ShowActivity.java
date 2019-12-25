@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.wd.doctor.MainActivity;
 import com.wd.doctor.R;
@@ -15,6 +17,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -62,6 +66,16 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onSendSuccess(SendBean data) {
+
+    }
+
+    @Override
+    public void onXiangSuccess(XinagQBean data) {
 
     }
 
@@ -167,8 +181,17 @@ public class ShowActivity extends BaseActivity<HomePresenter> implements HomeCon
                 intent1.putExtra("inauguralHospital",inauguralHospital);
                 intent1.putExtra("jobTitle",jobTitle);
                 intent1.putExtra("departmentName",departmentName);
-                startActivity(intent1);
+                startActivityForResult(intent1,10);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==10&&resultCode==123) {
+            String image = data.getStringExtra("image");
+            Glide.with(App.getAppContext()).load(image).into(imgShowTou);
         }
     }
 }

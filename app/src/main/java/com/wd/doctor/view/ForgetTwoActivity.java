@@ -15,6 +15,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -54,6 +56,16 @@ public class ForgetTwoActivity extends BaseActivity<HomePresenter> implements Ho
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onSendSuccess(SendBean data) {
+
+    }
+
+    @Override
+    public void onXiangSuccess(XinagQBean data) {
 
     }
 

@@ -31,6 +31,8 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <com.google.android.material.tabs.TabLayout
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@color/colorLan"
             app:tabMode="scrollable"
             android:id="@+id/sick_tab"
             android:layout_weight="8"

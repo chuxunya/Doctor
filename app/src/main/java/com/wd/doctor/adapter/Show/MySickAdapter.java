@@ -38,7 +38,8 @@ public class MySickAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Bundle bundle = new Bundle();bundle.putString("departmentId",result.get(position).getId()+"");
+        Bundle bundle = new Bundle();
+        bundle.putString("departmentId",result.get(position).getId()+"");
         SickFrag sickFrag = new SickFrag();
         sickFrag.setArguments(bundle);
         return sickFrag;

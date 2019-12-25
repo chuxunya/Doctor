@@ -21,6 +21,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -87,6 +89,16 @@ public class SickFrag extends BaseFragment<HomePresenter> implements HomeContrac
     }
 
     @Override
+    public void onSendSuccess(SendBean data) {
+
+    }
+
+    @Override
+    public void onXiangSuccess(XinagQBean data) {
+
+    }
+
+    @Override
     public void onDoctorSuccess(DoctorBean data) {
 
     }
@@ -104,6 +116,7 @@ public class SickFrag extends BaseFragment<HomePresenter> implements HomeContrac
     @Override
     public void onBodySuccess(BodyBean data) {
         if (data.getResult()!=null) {
+
             List<BodyBean.ResultBean> result = data.getResult();
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             sickRecycler.setLayoutManager(linearLayoutManager);
@@ -113,7 +126,7 @@ public class SickFrag extends BaseFragment<HomePresenter> implements HomeContrac
                 @Override
                 public void onItem(String id) {
                     Intent intent = new Intent(getActivity(), XiangQingActivity.class);
-                    intent.putExtra("id",id);
+                    intent.putExtra("sickId",id);
                     startActivity(intent);
                 }
             });

@@ -5,6 +5,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -51,6 +53,36 @@ public class HomePresenter extends BasePresenter<HomeContract.Iview> implements 
             @Override
             public void onSuccess(LoginBean data) {
                 getView().onLoginSuccess(data);
+            }
+
+            @Override
+            public void onError(String e) {
+                getView().onHomeError(e);
+            }
+        });
+    }
+
+    @Override
+    public void getXiangPresenter(String doctorId, String sessionId, String sickCircleId) {
+        homeModel.getXiangModel(doctorId, sessionId, sickCircleId, new HomeContract.Imodel.IModelXiangCallBack() {
+            @Override
+            public void onSuccess(XinagQBean data) {
+                getView().onXiangSuccess(data);
+            }
+
+            @Override
+            public void onError(String e) {
+                getView().onHomeError(e);
+            }
+        });
+    }
+
+    @Override
+    public void postSendPresenter(String doctorId, String sessionId, String sickCircleId, String content) {
+        homeModel.postSendModel(doctorId, sessionId, sickCircleId, content, new HomeContract.Imodel.IModelSendCallBack() {
+            @Override
+            public void onSuccess(SendBean data) {
+                getView().onSendSuccess(data);
             }
 
             @Override

@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.Show.UpdateActivity">
+<!--<TextView
+    android:id="@+id/tv_title_xing"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="70dp"
+    android:textColor="@color/colorLan"
+    android:textSize="16sp"
+    android:text="为您设置一张证件照吧"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"/>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:layout_below="@+id/tv_title_xing"
+        android:layout_width="300dp"
+        android:layout_height="360dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/bt_finish"
+        android:background="@drawable/btlogin"
+        android:textColor="@color/colorBai"
+        android:textSize="14sp"
+        android:text="完成设置"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="36dp"/>-->
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9.5"
+        android:id="@+id/viewpagg"></androidx.viewpager.widget.ViewPager>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal"
+        android:id="@+id/ragoup"
+        android:visibility="gone"
+        >
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="11"
+            android:gravity="center"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:text="212"
+            android:gravity="center"/>
+    </RadioGroup>
+</LinearLayout>

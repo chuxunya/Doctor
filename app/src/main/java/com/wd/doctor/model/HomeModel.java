@@ -8,6 +8,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -66,6 +68,38 @@ public class HomeModel implements HomeContract.Imodel {
 
 
         }
+
+    @Override
+    public void postSendModel(String doctorId, String sessionId, String sickCircleId, String content, IModelSendCallBack iModelCallBack) {
+        if (NetUtil.hasNet(App.getAppContext())) {
+            RetrofitManager.getInstance().create(ApiServer.class)
+                    .postSend(doctorId, sessionId, sickCircleId, content)
+                    .compose(CommonSchedulers.io2main())
+                    .subscribe(new Observer<SendBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(SendBean sendBean) {
+                            iModelCallBack.onSuccess(sendBean);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            iModelCallBack.onError(e.getMessage());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
+        }else {
+            Toast.makeText(App.getAppContext(), "网络开小差了,请检查网络", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void postCheckCodeModel(String email, String code, IModelCheckCodeCallBack iModelCallBack) {
@@ -127,6 +161,38 @@ public class HomeModel implements HomeContract.Imodel {
                         }
                     });
 
+        }else {
+            Toast.makeText(App.getAppContext(), "网络开小差了,请检查网络", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void getXiangModel(String doctorId, String sessionId, String sickCircleId, IModelXiangCallBack iModelCallBack) {
+        if (NetUtil.hasNet(App.getAppContext())) {
+            RetrofitManager.getInstance().create(ApiServer.class)
+                    .getXiang(doctorId, sessionId, sickCircleId)
+                    .compose(CommonSchedulers.io2main())
+                    .subscribe(new Observer<XinagQBean>() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onNext(XinagQBean xinagQBean) {
+                            iModelCallBack.onSuccess(xinagQBean);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            iModelCallBack.onError(e.getMessage());
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                        }
+                    });
         }else {
             Toast.makeText(App.getAppContext(), "网络开小差了,请检查网络", Toast.LENGTH_SHORT).show();
         }

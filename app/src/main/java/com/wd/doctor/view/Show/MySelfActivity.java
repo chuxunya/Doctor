@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
 import com.wd.doctor.R;
 import com.wd.doctor.bean.ForgetBean;
@@ -22,6 +25,8 @@ import com.wd.doctor.bean.LoginBean;
 import com.wd.doctor.bean.Show.BodyBean;
 import com.wd.doctor.bean.Show.DoctorBean;
 import com.wd.doctor.bean.Show.SearchBean;
+import com.wd.doctor.bean.Show.SendBean;
+import com.wd.doctor.bean.Show.XinagQBean;
 import com.wd.doctor.bean.login.CodeBean;
 import com.wd.doctor.bean.login.KeShiBean;
 import com.wd.doctor.bean.login.SettledInBean;
@@ -71,9 +76,20 @@ public class MySelfActivity extends BaseActivity<HomePresenter> implements HomeC
     private String jobTitle;
     private String inauguralHospital;
     private String name;
+    private String image1;
 
     @Override
     public void onLoginSuccess(LoginBean data) {
+
+    }
+
+    @Override
+    public void onSendSuccess(SendBean data) {
+
+    }
+
+    @Override
+    public void onXiangSuccess(XinagQBean data) {
 
     }
 
@@ -186,7 +202,8 @@ myPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MySelfActivity.this, UpdateActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,101);
+                mDialog.hide();
             }
         });
         //取消
@@ -196,7 +213,7 @@ myPhoto.setOnClickListener(new View.OnClickListener() {
                 mDialog.dismiss();
             }
         });
-
+//
     }
 
     @OnClick({R.id.my_back, R.id.my_ling, R.id.tv_look, R.id.liner_history, R.id.linear_money, R.id.linear_caina, R.id.linear_huifu, R.id.my_photo, R.id.self_update, R.id.self_cancel,R.id.relative_self})
@@ -220,7 +237,8 @@ myPhoto.setOnClickListener(new View.OnClickListener() {
 
                 break;
             case R.id.linear_money:
-                Toast.makeText(this, "钱包", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(MySelfActivity.this, MoneyActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.linear_caina:
                 Toast.makeText(this, "采纳", Toast.LENGTH_SHORT).show();
@@ -246,7 +264,25 @@ myPhoto.setOnClickListener(new View.OnClickListener() {
                 break;
         }
     }
-
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            Intent intent = new Intent();
+            intent.putExtra("image",image1);
+            setResult(123,intent);
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==101&&resultCode==100) {
+            image1 = data.getStringExtra("image");
+            Glide.with(App.getAppContext()).load(image1)
+                    .placeholder(R.mipmap.image_doctor)
+                    .into(myPhoto);
+        }
+    }
 
 }
